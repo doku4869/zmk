@@ -1,0 +1,8 @@
+# Copyright (c) 2020 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: JP Key press/release behavior
+
+compatible: "zmk,behavior-jp-key-press"
+
+include: one_param.yaml

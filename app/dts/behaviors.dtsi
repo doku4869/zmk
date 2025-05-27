@@ -5,6 +5,7 @@
  */
 
 #include <behaviors/key_press.dtsi>
+#include <behaviors/jp_key_press.dtsi>
 #include <behaviors/key_toggle.dtsi>
 #include <behaviors/transparent.dtsi>
 #include <behaviors/none.dtsi>
