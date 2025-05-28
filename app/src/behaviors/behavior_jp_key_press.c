@@ -44,8 +44,8 @@ static const struct behavior_parameter_metadata metadata = {
 #endif
 
 static bool is_shift_active() {
-    return zmk_hid_is_modifier_active(HID_USAGE_KEY_LEFT_SHIFT) ||
-           zmk_hid_is_modifier_active(HID_USAGE_KEY_RIGHT_SHIFT);
+    return zmk_hid_is_modifier_active(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT) ||
+           zmk_hid_is_modifier_active(HID_USAGE_KEY_KEYBOARD_RIGHTSHIFT);
 }
 
 // JIS変換関数例
