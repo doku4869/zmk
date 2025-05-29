@@ -21,7 +21,7 @@ bool jpmode = true;
 int jp_keymap_len = 22;
 
 // param1, already_shift, out_keycode, needs_shift
-static const struct behavior_binding_jp_keymap {
+typedef struct behavior_binding_jp_keymap {
     uint8_t param1;
     bool already_shift;
     uint8_t out_keycode;
@@ -94,7 +94,7 @@ static void convert_jis_key(uint8_t param1, bool *needs_shift, uint8_t *out_keyc
         if (jp_keymap[i].param1 == param1 && jp_keymap[i].already_shift == shift_already) {
             *out_keycode = jp_keymap[i].out_keycode;
             *needs_shift = jp_keymap[i].needs_shift;
-            jp_keymap[i].tap_count += 1;
+            jp_keymap[i].tap_count++;
             return;
         }
     }
@@ -108,7 +108,7 @@ static void convert_jis_key_release(uint8_t param1, bool *needs_shift, uint8_t *
 
     for (int i = 0; i < jp_keymap_len; i++) {
         if (jp_keymap[i].param1 == param1 && jp_keymap[i].tap_count > 0) {
-            jp_keymap[i].tap_count -= 1;
+            jp_keymap[i].tap_count--;
             *out_keycode = jp_keymap[i].out_keycode;
             *needs_shift = jp_keymap[i].already_shift;
             return;
