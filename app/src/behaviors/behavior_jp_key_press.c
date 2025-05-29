@@ -150,11 +150,10 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     if (needs_shift && !shift_already) {
         raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, true,
                                                         event.timestamp);
-    } 
-    // else if (!needs_shift && shift_already) {
-    //     raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, false,
-    //                                                     event.timestamp);
-    // }
+    } else if (!needs_shift && shift_already) {
+        raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, false,
+                                                        event.timestamp);
+    }
 
     LOG_DBG("position %d keycode 0x%02X", event.position, keycode);
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, true, event.timestamp);
