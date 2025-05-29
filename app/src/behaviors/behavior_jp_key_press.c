@@ -29,6 +29,7 @@
 #define KC_LBRC (0xF3)
 #define KC_RBRC (0xF4)
 #define KC_BSLS (0xF5)
+#define JPUS (0xF6)
 /*------------------------------*/
 bool jpmode = true;
 int jp_keymap_len = 22;
@@ -160,6 +161,9 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     bool needs_shift = false;
 
     bool shift_already = is_shift_active();
+    if(binding->param1 == JPUS) {
+        jpmode = !jpmode;
+    }
 
     if (jpmode) {
         convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
