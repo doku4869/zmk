@@ -15,6 +15,7 @@
 #include <zmk/behavior.h>
 #include <zmk/hid.h>
 #include <dt-bindings/zmk/hid_usage.h>
+#include <dt-bindings/zmk/keys.h>
 
 /*------------------------------*/
 bool jpmode = true;
@@ -51,7 +52,8 @@ struct behavior_binding_jp_keymap jp_keymap[] = {
 {HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE , true, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS, true, 0},
 {HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE , false, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE, true, 0},
 {HID_USAGE_KEY_KEYBOARD_CAPS_LOCK , false, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK, true, 0},
-{HID_USAGE_KEY_KEYBOARD_CAPS_LOCK , true, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK, false, 0}
+{HID_USAGE_KEY_KEYBOARD_CAPS_LOCK , true, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK, false, 0},
+{AT, true, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE, false, 0}
 };
 
 
