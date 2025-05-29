@@ -17,6 +17,13 @@
 #include <dt-bindings/zmk/hid_usage.h>
 #include <dt-bindings/zmk/keys.h>
 
+#define KC_AT (0xDE)
+#define KC_CARET (0xDF)
+#define KC_AMPERSAND (0xEC)
+#define KC_ASTERISK (0xED)
+#define KC_LEFT_PARENTHESIS (0xEE)
+#define KC_RIGHT_PARENTHESIS (0xEF)
+
 /*------------------------------*/
 bool jpmode = true;
 int jp_keymap_len = 22;
@@ -53,7 +60,12 @@ struct behavior_binding_jp_keymap jp_keymap[] = {
 {HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE , false, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE, true, 0},
 {HID_USAGE_KEY_KEYBOARD_CAPS_LOCK , false, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK, true, 0},
 {HID_USAGE_KEY_KEYBOARD_CAPS_LOCK , true, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK, false, 0},
-{AT, false, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE, false, 0}
+{KC_AT, false, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE, false, 0},
+{KC_CARET , false, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS, false, 0},
+{KC_AMPERSAND , false, HID_USAGE_KEY_KEYBOARD_6_AND_CARET, true, 0},
+{KC_ASTERISK , false, HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE, true, 0},
+{KC_LEFT_PARENTHESIS , false, HID_USAGE_KEY_KEYBOARD_8_AND_ASTERISK, true, 0},
+{KC_RIGHT_PARENTHESIS , false, HID_USAGE_KEY_KEYBOARD_9_AND_LEFT_PARENTHESIS, true, 0},
 };
 
 
