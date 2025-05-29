@@ -18,6 +18,7 @@
 
 /*------------------------------*/
 bool jpmode = true;
+int jp_keymap_len = 22;
 
 // param1, already_shift, out_keycode, needs_shift
 static const struct behavior_binding_jp_keymap {
@@ -88,85 +89,12 @@ static void convert_jis_key(uint8_t param1, bool *needs_shift, uint8_t *out_keyc
     *needs_shift = shift_already;
     *out_keycode = param1;
 
-    if (param1 == HID_USAGE_KEY_KEYBOARD_2_AND_AT && shift_already == true) { // @/Shift + 2
-        *needs_shift = false;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE; // [
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_6_AND_CARET &&
-               shift_already == true) { // ^/Shift + 6
-        *needs_shift = false;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS; // Shift + =
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_7_AND_AMPERSAND &&
-               shift_already == true) { // &/Shift + 7
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_6_AND_CARET; // Shift + 6
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_8_AND_ASTERISK &&
-               shift_already == true) { // */Shift + 8
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE; // Shift + '
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_9_AND_LEFT_PARENTHESIS &&
-               shift_already == true) { // (/Shift + 9
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_8_AND_ASTERISK; // Shift + 8
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_0_AND_RIGHT_PARENTHESIS &&
-               shift_already == true) { // )/Shift + 0
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_9_AND_LEFT_PARENTHESIS; // Shift + 9
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_MINUS_AND_UNDERSCORE &&
-               shift_already == true) { // _/Shift + -
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_INTERNATIONAL1; // Shift + ¥
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS && shift_already == false) { // =
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_MINUS_AND_UNDERSCORE; // Shift + -
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS &&
-               shift_already == true) { // +/Shift + =
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_SEMICOLON_AND_COLON; // Shift + ;
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE &&
-               shift_already == true) { // {/Shift + [
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_RIGHT_BRACKET_AND_RIGHT_BRACE; // Shift + ]
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE &&
-               shift_already == false) { // [
-        *needs_shift = false;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_RIGHT_BRACKET_AND_RIGHT_BRACE; // ]
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_RIGHT_BRACKET_AND_RIGHT_BRACE &&
-               shift_already == true) { // }/Shift + ]
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_NON_US_HASH_AND_TILDE; // Shift + ~
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_RIGHT_BRACKET_AND_RIGHT_BRACE &&
-               shift_already == false) { // ]
-        *needs_shift = false;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_NON_US_HASH_AND_TILDE; // ~
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_BACKSLASH_AND_PIPE &&
-               shift_already == true) {                       // |/Shift + \ 
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_INTERNATIONAL3; // Shift + ¥
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_BACKSLASH_AND_PIPE &&
-               shift_already == false) {                      // |/Shift + \ 
-        *needs_shift = false;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_INTERNATIONAL1; // \ 
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_SEMICOLON_AND_COLON && shift_already == true) { // :/Shift + ;
-        *needs_shift = false;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE; // '
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE && shift_already == true) { // "/Shift + '
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_2_AND_AT; // Shift + 2
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE && shift_already == false) { // '
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_7_AND_AMPERSAND; // Shift + 2
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE && shift_already == true) { // '
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS; // Shift + 2
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE && shift_already == false) { // '
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE; // Shift + 2
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_CAPS_LOCK && shift_already == false) { // '
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_CAPS_LOCK; // Shift + 2
-    } else if (param1 == HID_USAGE_KEY_KEYBOARD_CAPS_LOCK && shift_already == true) { // '
-        *needs_shift = false;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_CAPS_LOCK; // Shift + 2
+    for (int i = 0; i < jp_keymap_len; i++) {
+        if (jp_keymap[i].param1 == param1 && jp_keymap[i].already_shift == shift_already) {
+            *out_keycode = jp_keymap[i].out_keycode;
+            *needs_shift = jp_keymap[i].needs_shift;
+            return;
+        }
     }
 }
 
