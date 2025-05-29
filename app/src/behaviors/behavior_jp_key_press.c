@@ -146,7 +146,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
 
     if (jpmode) {
-        convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
+        convert_jis_key_release(binding->param1, &needs_shift, &keycode, shift_already);
     }
 
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, false, event.timestamp);
