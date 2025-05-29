@@ -21,7 +21,7 @@ bool jpmode = true;
 int jp_keymap_len = 22;
 
 // param1, already_shift, out_keycode, needs_shift
-struct behavior_binding_jp_keymap {
+typedef struct behavior_binding_jp_keymap {
     uint8_t param1;
     bool already_shift;
     uint8_t out_keycode;
