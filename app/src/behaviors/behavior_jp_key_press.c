@@ -94,7 +94,7 @@ static void convert_jis_key(uint8_t param1, bool *needs_shift, uint8_t *out_keyc
         if (jp_keymap[i].param1 == param1 && jp_keymap[i].already_shift == shift_already) {
             *out_keycode = jp_keymap[i].out_keycode;
             *needs_shift = jp_keymap[i].needs_shift;
-            jp_keymap[i].tap_count++;
+            jp_keymap[i].tap_count += 1;
             return;
         }
     }
@@ -108,7 +108,7 @@ static void convert_jis_key_release(uint8_t param1, bool *needs_shift, uint8_t *
 
     for (int i = 0; i < jp_keymap_len; i++) {
         if (jp_keymap[i].param1 == param1 && jp_keymap[i].tap_count > 0) {
-            jp_keymap[i].tap_count--;
+            jp_keymap[i].tap_count -= 1;
             *out_keycode = jp_keymap[i].out_keycode;
             *needs_shift = jp_keymap[i].already_shift;
             return;
