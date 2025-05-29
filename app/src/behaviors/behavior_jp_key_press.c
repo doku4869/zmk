@@ -105,7 +105,7 @@ static void convert_jis_key_release(uint8_t param1, bool *needs_shift, uint8_t *
     *out_keycode = param1;
 
     for (int i = 0; i < jp_keymap_len; i++) {
-        if (jp_keymap[i].out_keycode == param1 && jp_keymap[i].needs_shift == shift_already) {
+        if (jp_keymap[i].param1 == param1 && jp_keymap[i].needs_shift == shift_already) {
             *out_keycode = jp_keymap[i].out_keycode;
             *needs_shift = jp_keymap[i].already_shift;
             return;
