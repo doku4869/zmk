@@ -118,6 +118,17 @@ static void convert_jis_key_release(uint8_t param1, bool *needs_shift, uint8_t *
     }
 }
 
+static void shift_encoded_key(bool needs_shift, bool shift_already) {
+    if (needs_shift && !shift_already) {
+        raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, true,
+                                                        k_uptime_get());
+    } else if (!needs_shift && shift_already) {
+        raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, false,
+                                                        k_uptime_get());
+    }
+    return;
+}
+
 static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
                                         struct zmk_behavior_binding_event event) {
     uint8_t keycode = binding->param1;
@@ -129,13 +140,7 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
         convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
     }
 
-    if (needs_shift && !shift_already) {
-        raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, true,
-                                                        event.timestamp);
-    } else if (!needs_shift && shift_already) {
-        raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, false,
-                                                        event.timestamp);
-    }
+    shift_encoded_key(needs_shift, shift_already);
 
     LOG_DBG("position %d keycode 0x%02X", event.position, keycode);
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, true, event.timestamp);
@@ -156,13 +161,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
 
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, false, event.timestamp);
 
-    if (needs_shift && !shift_already) {
-        raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, false,
-                                                        event.timestamp);
-    } else if (!needs_shift && shift_already) {
-        raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, true,
-                                                        event.timestamp);
-    }
+    shift_encoded_key(needs_shift, shift_already);
 
     LOG_DBG("position %d keycode 0x%02X", event.position, keycode);
     return ret;
