@@ -841,26 +841,26 @@
 #define K_VOLUME_DOWN2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xEE))
 #define K_VOL_DN2 (K_VOLUME_DOWN2)
 
-/* Keyboard Mute */
-#define K_MUTE2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xEF))
+// /* Keyboard Mute */
+// #define K_MUTE2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xEF))
 
-/* Keyboard WWW */
-#define K_WWW (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF0))
+// /* Keyboard WWW */
+// #define K_WWW (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF0))
 
-/* Keyboard Back */
-#define K_BACK (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF1))
+// /* Keyboard Back */
+// #define K_BACK (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF1))
 
-/* Keyboard Forward */
-#define K_FORWARD (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF2))
+// /* Keyboard Forward */
+// #define K_FORWARD (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF2))
 
-/* Keyboard Stop */
-#define K_STOP3 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF3))
+// /* Keyboard Stop */
+// #define K_STOP3 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF3))
 
-/* Keyboard Find */
-#define K_FIND2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF4))
+// /* Keyboard Find */
+// #define K_FIND2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF4))
 
-/* Keyboard Scroll Up */
-#define K_SCROLL_UP (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF5))
+// /* Keyboard Scroll Up */
+// #define K_SCROLL_UP (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF5))
 
 /* Keyboard Scroll Down */
 #define K_SCROLL_DOWN (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF6))

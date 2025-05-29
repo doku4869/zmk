@@ -23,7 +23,12 @@
 #define KC_ASTERISK (0xED)
 #define KC_LEFT_PARENTHESIS (0xEE)
 #define KC_RIGHT_PARENTHESIS (0xEF)
-
+#define KC_GRV (0xF0)
+#define KC_MINS (0xF1)
+#define KC_EQL (0xF2)
+#define KC_LBRC (0xF3)
+#define KC_RBRC (0xF4)
+#define KC_BSLS (0xF5)
 /*------------------------------*/
 bool jpmode = true;
 int jp_keymap_len = 22;
@@ -66,6 +71,12 @@ struct behavior_binding_jp_keymap jp_keymap[] = {
 {KC_ASTERISK , false, HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE, true, 0},
 {KC_LEFT_PARENTHESIS , false, HID_USAGE_KEY_KEYBOARD_8_AND_ASTERISK, true, 0},
 {KC_RIGHT_PARENTHESIS , false, HID_USAGE_KEY_KEYBOARD_9_AND_LEFT_PARENTHESIS, true, 0},
+{KC_GRV, false, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS, true, 0},
+{KC_MINS, false, HID_USAGE_KEY_KEYBOARD_INTERNATIONAL1, true, 0},
+{KC_EQL, false, HID_USAGE_KEY_KEYBOARD_SEMICOLON_AND_COLON, true, 0},
+{KC_LBRC, false, HID_USAGE_KEY_KEYBOARD_RIGHT_BRACKET_AND_RIGHT_BRACE, true, 0},
+{KC_RBRC, false, HID_USAGE_KEY_KEYBOARD_NON_US_HASH_AND_TILDE, true, 0},
+{KC_BSLS, false, HID_USAGE_KEY_KEYBOARD_INTERNATIONAL3, true, 0}
 };
 
 
