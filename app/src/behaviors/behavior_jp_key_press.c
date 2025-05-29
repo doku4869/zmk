@@ -51,12 +51,12 @@ static bool is_shift_active() {
 // JIS変換関数例
 static void convert_jis_key(uint8_t param1, bool *needs_shift, uint8_t *out_keycode,
                             bool shift_already) {
-    *needs_shift = false;
+    *needs_shift = shift_already;
     *out_keycode = param1;
 
     if (param1 == HID_USAGE_KEY_KEYBOARD_2_AND_AT && shift_already == true) { // @/Shift + 2
-        *needs_shift = true;
-        *out_keycode = HID_USAGE_KEY_KEYBOARD_RIGHT_BRACKET_AND_RIGHT_BRACE; // Shift + ]
+        *needs_shift = false;
+        *out_keycode = HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE; // [
     } else if (param1 == HID_USAGE_KEY_KEYBOARD_6_AND_CARET &&
                shift_already == true) { // ^/Shift + 6
         *needs_shift = false;
@@ -150,10 +150,11 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     if (needs_shift && !shift_already) {
         raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, true,
                                                         event.timestamp);
-    } else if (!needs_shift && shift_already) {
-        raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, false,
-                                                        event.timestamp);
-    }
+    } 
+    // else if (!needs_shift && shift_already) {
+    //     raise_zmk_keycode_state_changed_from_encoded(HID_USAGE_KEY_KEYBOARD_LEFTSHIFT, false,
+    //                                                     event.timestamp);
+    // }
 
     LOG_DBG("position %d keycode 0x%02X", event.position, keycode);
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, true, event.timestamp);
