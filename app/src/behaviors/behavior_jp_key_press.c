@@ -21,7 +21,7 @@ bool jpmode = true;
 int jp_keymap_len = 22;
 
 // param1, already_shift, out_keycode, needs_shift
-typedef struct behavior_binding_jp_keymap {
+struct behavior_binding_jp_keymap {
     uint8_t param1;
     bool already_shift;
     uint8_t out_keycode;
@@ -29,7 +29,7 @@ typedef struct behavior_binding_jp_keymap {
     int tap_count;
 };
 
-behavior_binding_jp_keymap jp_keymap[] = {
+struct behavior_binding_jp_keymap jp_keymap[] = {
 {HID_USAGE_KEY_KEYBOARD_2_AND_AT, true, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE, false, 0},
 {HID_USAGE_KEY_KEYBOARD_6_AND_CARET , true, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS, false, 0},
 {HID_USAGE_KEY_KEYBOARD_7_AND_AMPERSAND , true, HID_USAGE_KEY_KEYBOARD_6_AND_CARET, true, 0},
