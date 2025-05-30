@@ -161,13 +161,13 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     bool needs_shift = false;
 
     bool shift_already = is_shift_active();
-    if(binding->param1 == JPUS) {
-        jpmode = !jpmode;
-    }
-
-    // if (jpmode) {
-    //     convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
+    // if(binding->param1 == JPUS) {
+    //     jpmode = !jpmode;
     // }
+
+    if (jpmode) {
+        convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
+    }
 
     shift_encoded_key(needs_shift, shift_already);
 
