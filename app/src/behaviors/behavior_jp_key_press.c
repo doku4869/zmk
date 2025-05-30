@@ -17,6 +17,20 @@
 #include <dt-bindings/zmk/hid_usage.h>
 #include <dt-bindings/zmk/keys.h>
 
+#define KC_AT (ZMK_HID_USAGE(HID_USAGE_KEY,0xDE))
+#define KC_CARET (ZMK_HID_USAGE(HID_USAGE_KEY,0xDF))
+#define KC_AMPERSAND (ZMK_HID_USAGE(HID_USAGE_KEY,0xEC))
+#define KC_ASTERISK (ZMK_HID_USAGE(HID_USAGE_KEY,0xED))
+#define KC_LEFT_PARENTHESIS (ZMK_HID_USAGE(HID_USAGE_KEY,0xEE))
+#define KC_RIGHT_PARENTHESIS (ZMK_HID_USAGE(HID_USAGE_KEY,0xEF))
+#define KC_GRV (ZMK_HID_USAGE(HID_USAGE_KEY,0xF0))
+#define KC_MINS (ZMK_HID_USAGE(HID_USAGE_KEY,0xF1))
+#define KC_EQL (ZMK_HID_USAGE(HID_USAGE_KEY,0xF2))
+#define KC_LBRC (ZMK_HID_USAGE(HID_USAGE_KEY,0xF3))
+#define KC_RBRC (ZMK_HID_USAGE(HID_USAGE_KEY,0xF4))
+#define KC_BSLS (ZMK_HID_USAGE(HID_USAGE_KEY,0xF5))
+#define JPUS (ZMK_HID_USAGE(HID_USAGE_KEY,0xF6))
+
 /*------------------------------*/
 bool jpmode = true;
 int jp_keymap_len = 22;
