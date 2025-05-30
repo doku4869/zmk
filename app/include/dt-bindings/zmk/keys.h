@@ -1444,27 +1444,16 @@
 #define C_AC_NEXT_KEYBOARD_LAYOUT_SELECT (ZMK_HID_USAGE(HID_USAGE_CONSUMER, 0x029D))
 #define GLOBE (C_AC_NEXT_KEYBOARD_LAYOUT_SELECT)
 
-#define KC_AT                0xDE
-#define KC_CARET             0xDF
-#define KC_AMPERSAND         0xEC
-#define KC_ASTERISK          0xED
-#define KC_LEFT_PARENTHESIS  0xEE
-#define KC_RIGHT_PARENTHESIS 0xEF
-#define KC_GRV               0xF0
-#define KC_MINS              0xF1
-#define KC_EQL               0xF2
-#define KC_LBRC              0xF3
-#define KC_RBRC              0xF4
-#define KC_BSLS              0xF5
-#define JPUS                 0xF6
-
-
-
-
-
-
-
-
-
-
-
+#define KC_AT                (ZMK_HID_USAGE(HID_USAGE_KEY, 0xDE))
+#define KC_CARET             (ZMK_HID_USAGE(HID_USAGE_KEY, 0xDF))
+#define KC_AMPERSAND         (ZMK_HID_USAGE(HID_USAGE_KEY, 0xEC))
+#define KC_ASTERISK          (ZMK_HID_USAGE(HID_USAGE_KEY, 0xED))
+#define KC_LEFT_PARENTHESIS  (ZMK_HID_USAGE(HID_USAGE_KEY, 0xEE))
+#define KC_RIGHT_PARENTHESIS (ZMK_HID_USAGE(HID_USAGE_KEY, 0xEF))
+#define KC_GRV               (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF0))
+#define KC_MINS              (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF1))
+#define KC_EQL               (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF2))
+#define KC_LBRC              (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF3))
+#define KC_RBRC              (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF4))
+#define KC_BSLS              (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF5))
+#define JPUS                 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF6))
