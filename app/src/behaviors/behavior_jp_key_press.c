@@ -17,19 +17,19 @@
 #include <dt-bindings/zmk/hid_usage.h>
 #include <dt-bindings/zmk/keys.h>
 
-#define KC_AT K_MUTE2
-#define KC_CARET K_WWW
-#define KC_AMPERSAND K_BACK
-#define KC_ASTERISK K_FORWARD
-#define KC_LEFT_PARENTHESIS K_STOP3
-#define KC_RIGHT_PARENTHESIS K_FIND2
-#define KC_GRV K_SCROLL_UP
-#define KC_MINS K_SCROLL_DOWN
-#define KC_EQL K_EDIT
-#define KC_LBRC K_SLEEP
-#define KC_RBRC K_LOCK
-#define KC_BSLS K_REFRESH
-#define JPUS K_CALCULATOR
+#define KC_AT                HID_USAGE_LED_UNDEFINED
+#define KC_CARET             HID_USAGE_LED_NUM_LOCK
+#define KC_AMPERSAND         HID_USAGE_LED_CAPS_LOCK
+#define KC_ASTERISK          HID_USAGE_LED_SCROLL_LOCK
+#define KC_LEFT_PARENTHESIS  HID_USAGE_LED_COMPOSE
+#define KC_RIGHT_PARENTHESIS HID_USAGE_LED_KANA
+#define KC_GRV               HID_USAGE_LED_POWER
+#define KC_MINS              HID_USAGE_LED_SHIFT
+#define KC_EQL               HID_USAGE_LED_DO_NOT_DISTURB
+#define KC_LBRC              HID_USAGE_LED_MUTE
+#define KC_RBRC              HID_USAGE_LED_TONE_ENABLE
+#define KC_BSLS              HID_USAGE_LED_HIGH_CUT_FILTER
+#define JPUS                 HID_USAGE_LED_LOW_CUT_FILTER
 /*------------------------------*/
 bool jpmode = true;
 int jp_keymap_len = 22;
