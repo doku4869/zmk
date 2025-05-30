@@ -17,20 +17,19 @@
 #include <dt-bindings/zmk/hid_usage.h>
 #include <dt-bindings/zmk/keys.h>
 
-#define KC_AT (0xDE)
-#define KC_CARET (0xDF)
-#define KC_AMPERSAND (0xEC)
-#define KC_ASTERISK (0xED)
-#define KC_LEFT_PARENTHESIS (0xEE)
-#define KC_RIGHT_PARENTHESIS (0xEF)
-#define KC_GRV (0xF0)
-#define KC_MINS (0xF1)
-#define KC_EQL (0xF2)
-#define KC_LBRC (0xF3)
-#define KC_RBRC (0xF4)
-#define KC_BSLS (0xF5)
-#define JPUS (0xF6)
-
+#define KC_AT K_MUTE2
+#define KC_CARET K_WWW
+#define KC_AMPERSAND K_BACK
+#define KC_ASTERISK K_FORWARD
+#define KC_LEFT_PARENTHESIS K_STOP3
+#define KC_RIGHT_PARENTHESIS K_FIND2
+#define KC_GRV K_SCROLL_UP
+#define KC_MINS K_SCROLL_DOWN
+#define KC_EQL K_EDIT
+#define KC_LBRC K_SLEEP
+#define KC_RBRC K_LOCK
+#define KC_BSLS K_REFRESH
+#define JPUS K_CALCULATOR
 /*------------------------------*/
 bool jpmode = true;
 int jp_keymap_len = 22;
