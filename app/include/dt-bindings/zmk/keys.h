@@ -1445,6 +1445,19 @@
 #define GLOBE (C_AC_NEXT_KEYBOARD_LAYOUT_SELECT)
 #define HID_CUSTM_KEY 0x01
 
+#define HID_USAGE_KEY_KEYBOARD_AT (0xE8)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_CARET (0xE9)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_AMPERSAND (0xEA)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_ASTERISK (0xEB)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_LEFT_PARENTHESIS (0xEC)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_RIGHT_PARENTHESIS (0xED)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_TILD (0xEE)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_UNDER (0xEF)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_PLUS (0xF0)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_LBRC (0xF1)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_RBRC (0xF2)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_PIPE (0xF3)                     // DV
+
 #define KC_AT (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_KC_AT))
 #define KC_CARET (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_KC_CARET))
 #define KC_AMPERSAND (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_KC_AMPERSAND))
