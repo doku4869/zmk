@@ -841,26 +841,26 @@
 #define K_VOLUME_DOWN2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xEE))
 #define K_VOL_DN2 (K_VOLUME_DOWN2)
 
-// /* Keyboard Mute */
-// #define K_MUTE2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xEF))
+/* Keyboard Mute */
+#define K_MUTE2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xEF))
 
-// /* Keyboard WWW */
-// #define K_WWW (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF0))
+/* Keyboard WWW */
+#define K_WWW (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF0))
 
-// /* Keyboard Back */
-// #define K_BACK (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF1))
+/* Keyboard Back */
+#define K_BACK (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF1))
 
-// /* Keyboard Forward */
-// #define K_FORWARD (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF2))
+/* Keyboard Forward */
+#define K_FORWARD (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF2))
 
-// /* Keyboard Stop */
-// #define K_STOP3 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF3))
+/* Keyboard Stop */
+#define K_STOP3 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF3))
 
-// /* Keyboard Find */
-// #define K_FIND2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF4))
+/* Keyboard Find */
+#define K_FIND2 (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF4))
 
-// /* Keyboard Scroll Up */
-// #define K_SCROLL_UP (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF5))
+/* Keyboard Scroll Up */
+#define K_SCROLL_UP (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF5))
 
 /* Keyboard Scroll Down */
 #define K_SCROLL_DOWN (ZMK_HID_USAGE(HID_USAGE_KEY, 0xF6))
@@ -1443,3 +1443,18 @@
 /* Apple Globe key */
 #define C_AC_NEXT_KEYBOARD_LAYOUT_SELECT (ZMK_HID_USAGE(HID_USAGE_CONSUMER, 0x029D))
 #define GLOBE (C_AC_NEXT_KEYBOARD_LAYOUT_SELECT)
+
+
+#define KC_AT (0xDE)
+#define KC_CARET (0xDF)
+#define KC_AMPERSAND (0xEC)
+#define KC_ASTERISK (0xED)
+#define KC_LEFT_PARENTHESIS (0xEE)
+#define KC_RIGHT_PARENTHESIS (0xEF)
+#define KC_GRV (0xF0)
+#define KC_MINS (0xF1)
+#define KC_EQL (0xF2)
+#define KC_LBRC (0xF3)
+#define KC_RBRC (0xF4)
+#define KC_BSLS (0xF5)
+#define JPUS (0xF6)
