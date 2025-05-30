@@ -507,6 +507,19 @@
 #define HID_USAGE_KEY_KEYBOARD_RIGHTALT (0xE6)                      // DV
 #define HID_USAGE_KEY_KEYBOARD_RIGHT_GUI (0xE7)                     // DV
 
+#define HID_USAGE_KEY_KEYBOARD_AT (0xE8)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_CARET (0xE9)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_AMPERSAND (0xEA)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_ASTERISK (0xEB)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_LEFT_PARENTHESIS (0xEC)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_RIGHT_PARENTHESIS (0xED)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_TILD (0xEE)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_UNDER (0xEF)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_PLUS (0xF0)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_LBRC (0xF1)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_RBRC (0xF2)                     // DV
+#define HID_USAGE_KEY_KEYBOARD_PIPE (0xF3)                     // DV
+
 /* Page 0x08: LED */
 #define HID_USAGE_LED_UNDEFINED (0x00)
 #define HID_USAGE_LED_NUM_LOCK (0x01)                   // OOC
