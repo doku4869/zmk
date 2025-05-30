@@ -165,9 +165,9 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
         jpmode = !jpmode;
     }
 
-    if (jpmode) {
-        convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
-    }
+    // if (jpmode) {
+    //     convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
+    // }
 
     shift_encoded_key(needs_shift, shift_already);
 
