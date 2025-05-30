@@ -1444,16 +1444,27 @@
 #define C_AC_NEXT_KEYBOARD_LAYOUT_SELECT (ZMK_HID_USAGE(HID_USAGE_CONSUMER, 0x029D))
 #define GLOBE (C_AC_NEXT_KEYBOARD_LAYOUT_SELECT)
 
-#define KC_AT                HID_USAGE_KEY_KEYBOARD_LANG1
-#define KC_CARET             HID_USAGE_LED_NUM_LOCK
-#define KC_AMPERSAND         HID_USAGE_LED_CAPS_LOCK
-#define KC_ASTERISK          HID_USAGE_LED_SCROLL_LOCK
-#define KC_LEFT_PARENTHESIS  HID_USAGE_LED_COMPOSE
-#define KC_RIGHT_PARENTHESIS HID_USAGE_LED_KANA
-#define KC_GRV               HID_USAGE_LED_POWER
-#define KC_MINS              HID_USAGE_LED_SHIFT
-#define KC_EQL               HID_USAGE_LED_DO_NOT_DISTURB
-#define KC_LBRC              HID_USAGE_LED_MUTE
-#define KC_RBRC              HID_USAGE_LED_TONE_ENABLE
-#define KC_BSLS              HID_USAGE_LED_HIGH_CUT_FILTER
-#define JPUS                 HID_USAGE_LED_LOW_CUT_FILTER
+#define KC_AT                0xDE
+#define KC_CARET             0xDF
+#define KC_AMPERSAND         0xEC
+#define KC_ASTERISK          0xED
+#define KC_LEFT_PARENTHESIS  0xEE
+#define KC_RIGHT_PARENTHESIS 0xEF
+#define KC_GRV               0xF0
+#define KC_MINS              0xF1
+#define KC_EQL               0xF2
+#define KC_LBRC              0xF3
+#define KC_RBRC              0xF4
+#define KC_BSLS              0xF5
+#define JPUS                 0xF6
+
+
+
+
+
+
+
+
+
+
+
