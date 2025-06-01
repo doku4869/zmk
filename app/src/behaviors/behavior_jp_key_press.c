@@ -33,6 +33,7 @@
 /*------------------------------*/
 bool jpmode = true;
 int jp_keymap_len = 22;
+int kc_keymap_len = 12;
 
 // param1, already_shift, out_keycode, needs_shift
 struct behavior_binding_jp_keymap {
@@ -65,23 +66,60 @@ struct behavior_binding_jp_keymap jp_keymap[] = {
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE), true, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS), true, 0},
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE), true, 0},
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, 0},
-    {KC_AT, false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE), false, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CARET), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS), false, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_AMPERSAND), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_6_AND_CARET), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_ASTERISK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_PARENTHESIS), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_8_AND_ASTERISK), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_RIGHT_PARENTHESIS), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_9_AND_LEFT_PARENTHESIS), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_TILD), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_UNDER), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_INTERNATIONAL1), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_PLUS), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_SEMICOLON_AND_COLON), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LBRC), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_RIGHT_BRACKET_AND_RIGHT_BRACE), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_RBRC), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_NON_US_HASH_AND_TILDE), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_PIPE), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_INTERNATIONAL3), true, 0}
+    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, 0}
 };
 
 
+struct behavior_binding_kc_keymap {
+    uint32_t param1;
+    uint32_t out_keycode;
+    bool needs_shift;
+};
 
+struct behavior_binding_kc_keymap kc_keymap[] = {
+    {KC_AT, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE), false},
+    {KC_CARET, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS), false},
+    {KC_AMPERSAND, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_6_AND_CARET), true},
+    {KC_ASTERISK, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE), true},
+    {KC_LEFT_PARENTHESIS, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_8_AND_ASTERISK), true},
+    {KC_RIGHT_PARENTHESIS, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_9_AND_LEFT_PARENTHESIS), true},
+    {KC_TILD, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS), true},
+    {KC_UNDER, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_INTERNATIONAL1), true},
+    {KC_PLUS, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_SEMICOLON_AND_COLON), true},
+    {KC_LBRC, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_RIGHT_BRACKET_AND_RIGHT_BRACE), true},
+    {KC_RBRC, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_NON_US_HASH_AND_TILDE), true},
+    {KC_PIPE, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_INTERNATIONAL3), true}
+};
+
+// JIS変換関数例
+static void convert_kc_key(uint32_t param1, bool *needs_shift, uint32_t *out_keycode,
+                            bool shift_already) {
+    *needs_shift = shift_already;
+    *out_keycode = param1;
+
+    for (int i = 0; i < kc_keymap_len; i++) {
+        if (kc_keymap[i].param1 == param1) {
+            *out_keycode = kc_keymap[i].out_keycode;
+            *needs_shift = kc_keymap[i].needs_shift;
+            return;
+        }
+    }
+}
+
+// JIS変換関数例
+static void convert_kc_key_release(uint32_t param1, bool *needs_shift, uint32_t *out_keycode,
+                            bool shift_already) {
+    *needs_shift = shift_already;
+    *out_keycode = param1;
+
+    for (int i = 0; i < kc_keymap_len; i++) {
+        if (kc_keymap[i].param1 == param1) {
+            *out_keycode = kc_keymap[i].out_keycode;
+            *needs_shift = !(kc_keymap[i].needs_shift);
+            return;
+        }
+    }
+}
 /*------------------------------*/
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
@@ -167,11 +205,9 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
 
     if (jpmode) {
         convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
+        convert_kc_key(binding->param1, &needs_shift, &keycode, shift_already);
     }
 
-    if (keycode == KC_AT) {
-        keycode = (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE));
-    }
     shift_encoded_key(needs_shift, shift_already);
 
     LOG_DBG("position %d keycode 0x%02X", event.position, keycode);
@@ -192,11 +228,9 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
 
     if (jpmode) {
         convert_jis_key_release(binding->param1, &needs_shift, &keycode, shift_already);
+        convert_kc_key_release(binding->param1, &needs_shift, &keycode, shift_already);
     }
 
-    if (keycode == KC_AT) {
-        keycode = (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE));
-    }
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, false, event.timestamp);
 
     shift_encoded_key(needs_shift, shift_already);
