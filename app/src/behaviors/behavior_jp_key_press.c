@@ -171,7 +171,7 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
         convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
     }
 
-    keycode == (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE));
+    keycode = (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE));
     shift_encoded_key(needs_shift, shift_already);
 
     LOG_DBG("position %d keycode 0x%02X", event.position, keycode);
@@ -194,7 +194,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
         convert_jis_key_release(binding->param1, &needs_shift, &keycode, shift_already);
     }
 
-    keycode == (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE));
+    keycode = (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE));
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, false, event.timestamp);
 
     shift_encoded_key(needs_shift, shift_already);
