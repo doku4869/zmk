@@ -187,8 +187,8 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
 
     bool shift_already = is_shift_active();
 
-    if (keycode == KC_AT) {
-        keycode == ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE);
+    if (keycode == 0xF001) {
+        keycode == (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE));
     }
 
     if (jpmode) {
