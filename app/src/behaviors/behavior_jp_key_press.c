@@ -165,7 +165,7 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     //     jpmode = !jpmode;
     // }
     if (keycode == 0xF001) {
-        keycode == ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE);
+        keycode == (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE));
     }
 
     if (jpmode) {
