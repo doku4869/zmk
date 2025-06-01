@@ -115,7 +115,7 @@ static void convert_kc_key_release(uint32_t param1, bool *needs_shift, uint32_t 
     for (int i = 0; i < kc_keymap_len; i++) {
         if (kc_keymap[i].param1 == param1) {
             *out_keycode = kc_keymap[i].out_keycode;
-            *needs_shift = !(kc_keymap[i].needs_shift);
+            *needs_shift = false;
             return;
         }
     }
