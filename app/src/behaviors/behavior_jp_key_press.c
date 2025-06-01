@@ -64,9 +64,9 @@ struct behavior_binding_jp_keymap jp_keymap[] = {
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE), true, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_2_AND_AT), true, 0},
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_7_AND_AMPERSAND), true, 0},
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE), true, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, 0}
+    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE), true, 0}
+    // {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true, 0},
+    // {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, 0}
 };
 
 
@@ -199,9 +199,10 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     bool needs_shift = false;
 
     bool shift_already = is_shift_active();
-    // if(binding->param1 == JPUS) {
-    //     jpmode = !jpmode;
-    // }
+
+    if(keycode == JPUS) {
+        jpmode = !jpmode;
+    }
 
     if (jpmode) {
         convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
@@ -222,9 +223,6 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool needs_shift = false;
 
     bool shift_already = is_shift_active();
-
-    // if (keycode == 0xF001) {
-    // }
 
     if (jpmode) {
         convert_jis_key_release(binding->param1, &needs_shift, &keycode, shift_already);
