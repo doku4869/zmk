@@ -164,6 +164,9 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     // if(binding->param1 == JPUS) {
     //     jpmode = !jpmode;
     // }
+    if (keycode == KC_AT) {
+        keycode == ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE);
+    }
 
     if (jpmode) {
         convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
@@ -183,6 +186,10 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool needs_shift = false;
 
     bool shift_already = is_shift_active();
+
+    if (keycode == KC_AT) {
+        keycode == ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE);
+    }
 
     if (jpmode) {
         convert_jis_key_release(binding->param1, &needs_shift, &keycode, shift_already);
