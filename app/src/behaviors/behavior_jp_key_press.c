@@ -66,7 +66,7 @@ struct behavior_binding_jp_keymap jp_keymap[] = {
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE), true, 0},
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true, 0},
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, 0},
-    {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_AT), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE), false, 0},
+    {KC_AT, false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE), false, 0},
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CARET), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_EQUAL_AND_PLUS), false, 0},
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_AMPERSAND), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_6_AND_CARET), true, 0},
     {ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_ASTERISK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE), true, 0},
@@ -171,7 +171,6 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
 
     shift_encoded_key(needs_shift, shift_already);
 
-    keycode = (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_A));
     LOG_DBG("position %d keycode 0x%02X", event.position, keycode);
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, true, event.timestamp);
 
@@ -189,7 +188,6 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
         convert_jis_key_release(binding->param1, &needs_shift, &keycode, shift_already);
     }
 
-    keycode = (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_A));
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, false, event.timestamp);
 
     shift_encoded_key(needs_shift, shift_already);
