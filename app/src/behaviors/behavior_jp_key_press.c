@@ -20,6 +20,7 @@
 #define PRESS true
 #define RELEASE false
 /*------------------------------*/
+bool shift_flag = false;
 bool jpmode = true;
 int jp_keymap_len = 34;
 int kc_keymap_len = 1;
@@ -102,7 +103,7 @@ static void convert_kc_key(uint32_t param1, bool *needs_shift, uint32_t *out_key
                     *needs_shift = kc_keymap[i].us_needs_shift;
                     return;
                 } else if (press_or_release == RELEASE) {
-                    *needs_shift = false;
+                    *needs_shift = shift_flag;
                     return;
                 }
             }
@@ -152,7 +153,7 @@ static void convert_jis_key(uint32_t param1, bool *needs_shift, uint32_t *out_ke
         } else if (jp_keymap[i].param1 == param1 && jp_keymap[i].tap_count > 0 && press_or_release == RELEASE) {
             jp_keymap[i].tap_count--;
             *out_keycode = jp_keymap[i].out_keycode;
-            *needs_shift = jp_keymap[i].already_shift;
+            *needs_shift = shift_flag;
             return;
         }
     }
@@ -176,6 +177,10 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
     bool needs_shift = shift_already;
 
+    if (keycode == LSHIFT) {
+        shift_flag = true
+    }
+
     if(keycode == JPUS) {
         jpmode = !jpmode;
     }
@@ -198,6 +203,10 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
 
     bool shift_already = is_shift_active();
     bool needs_shift = shift_already;
+
+    if (keycode == LSHIFT) {
+        shift_flag = false
+    }
 
     if (jpmode) {
         convert_jis_key(keycode, &needs_shift, &keycode, shift_already, RELEASE);
