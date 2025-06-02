@@ -188,13 +188,8 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
     bool needs_shift = shift_already;
 
-    if (keycode == LSHIFT) {
-        shift_flag = true;
-    }
-
-    if(keycode == JPUS) {
-        jpmode = !jpmode;
-    }
+    if (keycode == LSHIFT) { shift_flag = true; }
+    if(keycode == JPUS) { jpmode = !jpmode; }
 
     if (jpmode) {
         convert_jis_key(keycode, &needs_shift, &keycode, shift_already, PRESS);
@@ -215,9 +210,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
     bool needs_shift = shift_already;
 
-    if (keycode == LSHIFT) {
-        shift_flag = false;
-    }
+    if (keycode == LSHIFT) { shift_flag = false; }
 
     if (jpmode) {
         convert_jis_key(keycode, &needs_shift, &keycode, shift_already, RELEASE);
