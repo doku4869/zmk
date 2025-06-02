@@ -197,7 +197,7 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
     bool needs_shift = shift_already;
 
-    if (keycode == KC_SHIFT) {
+    if (keycode == LSHIFT) {
         shift_flag = true;
     }
 
@@ -224,7 +224,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
     bool needs_shift = shift_already;
 
-    if (keycode == KC_SHIFT) {
+    if (keycode == LSHIFT) {
         shift_flag = false;
     }
 
