@@ -178,7 +178,7 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     bool needs_shift = shift_already;
 
     if (keycode == LSHIFT) {
-        shift_flag = true
+        shift_flag = true;
     }
 
     if(keycode == JPUS) {
@@ -205,7 +205,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool needs_shift = shift_already;
 
     if (keycode == LSHIFT) {
-        shift_flag = false
+        shift_flag = false;
     }
 
     if (jpmode) {
