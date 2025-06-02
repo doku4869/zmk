@@ -81,7 +81,8 @@ struct behavior_binding_kc_keymap {
 };
 
 struct behavior_binding_kc_keymap kc_keymap[] = {
-    {KC_IME, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true}
+    {KC_IME, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true},
+    {KC_AT, 0, false, 0, false}
 };
 
 static void convert_kc_key(uint32_t param1, bool *needs_shift, uint32_t *out_keycode,
@@ -94,7 +95,7 @@ static void convert_kc_key(uint32_t param1, bool *needs_shift, uint32_t *out_key
                     *needs_shift = kc_keymap[i].jp_needs_shift;
                     return;
                 } else if (press_or_release == RELEASE) {
-                    *needs_shift = false;
+                    *needs_shift = shift_flag;
                     return;
                 }
             } else {
