@@ -195,9 +195,9 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
 static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
                                         struct zmk_behavior_binding_event event) {
     uint32_t keycode = binding->param1;
-    bool needs_shift = false;
 
     bool shift_already = is_shift_active();
+    bool needs_shift = shift_already;
 
     if (jpmode) {
         convert_jis_key(keycode, &needs_shift, &keycode, shift_already, RELEASE);
