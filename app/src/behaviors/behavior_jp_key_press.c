@@ -81,45 +81,34 @@ struct behavior_binding_kc_keymap {
 };
 
 struct behavior_binding_kc_keymap kc_keymap[] = {
-    {KC_IME, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true},
-    {KC_AT, 0, false, 0, false}
+    {KC_IME, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true}
 };
 
 static void convert_kc_key(uint32_t param1, bool *needs_shift, uint32_t *out_keycode,
                             bool shift_already, bool press_or_release) {
-    if (kc_keymap[0].param1 == param1){
-        *out_keycode = kc_keymap[0].jp_out_keycode;
-        if (press_or_release == PRESS) {
-            *needs_shift = kc_keymap[0].jp_needs_shift;
-            return;
-        } else if (press_or_release == RELEASE) {
-            *needs_shift = shift_flag;
-            return;
+    for (int i = 0; i < kc_keymap_len; i++) {
+        if (kc_keymap[i].param1 == param1) {
+            if (jpmode) {
+                *out_keycode = kc_keymap[i].jp_out_keycode;
+                if (press_or_release == PRESS) {
+                    *needs_shift = kc_keymap[i].jp_needs_shift;
+                    return;
+                } else if (press_or_release == RELEASE) {
+                    *needs_shift = shift_flag;
+                    return;
+                }
+            } else {
+                *out_keycode = kc_keymap[i].us_out_keycode;
+                if (press_or_release == PRESS) {
+                    *needs_shift = kc_keymap[i].us_needs_shift;
+                    return;
+                } else if (press_or_release == RELEASE) {
+                    *needs_shift = shift_flag;
+                    return;
+                }
+            }
         }
-    } 
-    // for (int i = 0; i < kc_keymap_len; i++) {
-    //     if (kc_keymap[i].param1 == param1) {
-    //         if (jpmode) {
-    //             *out_keycode = kc_keymap[i].jp_out_keycode;
-    //             if (press_or_release == PRESS) {
-    //                 *needs_shift = kc_keymap[i].jp_needs_shift;
-    //                 return;
-    //             } else if (press_or_release == RELEASE) {
-    //                 *needs_shift = shift_flag;
-    //                 return;
-    //             }
-    //         } else {
-    //             *out_keycode = kc_keymap[i].us_out_keycode;
-    //             if (press_or_release == PRESS) {
-    //                 *needs_shift = kc_keymap[i].us_needs_shift;
-    //                 return;
-    //             } else if (press_or_release == RELEASE) {
-    //                 *needs_shift = shift_flag;
-    //                 return;
-    //             }
-    //         }
-    //     }
-    // }
+    }
 }
 
 /*------------------------------*/
