@@ -87,6 +87,25 @@ struct behavior_binding_kc_keymap kc_keymap[] = {
 
 static void convert_kc_key(uint32_t param1, bool *needs_shift, uint32_t *out_keycode,
                             bool shift_already, bool press_or_release) {
+    if (jpmode){
+        *out_keycode = kc_keymap[0].jp_out_keycode;
+        if (press_or_release == PRESS) {
+            *needs_shift = kc_keymap[0].jp_needs_shift;
+            return;
+        } else if (press_or_release == RELEASE) {
+            *needs_shift = shift_flag;
+            return;
+        }
+    } else {
+        *out_keycode = kc_keymap[0].us_out_keycode;
+        if (press_or_release == PRESS) {
+            *needs_shift = kc_keymap[0].us_needs_shift;
+            return;
+        } else if (press_or_release == RELEASE) {
+            *needs_shift = shift_flag;
+            return;
+        }
+    }
     for (int i = 0; i < kc_keymap_len; i++) {
         if (kc_keymap[i].param1 == param1) {
             if (jpmode) {
@@ -178,7 +197,7 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
     bool needs_shift = shift_already;
 
-    if (keycode == LSHIFT) {
+    if (keycode == KC_SHIFT) {
         shift_flag = true;
     }
 
@@ -205,7 +224,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
     bool needs_shift = shift_already;
 
-    if (keycode == LSHIFT) {
+    if (keycode == KC_SHIFT) {
         shift_flag = false;
     }
 
