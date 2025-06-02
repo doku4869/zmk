@@ -173,9 +173,8 @@ static void shift_encoded_key(bool needs_shift, bool shift_already) {
 static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
                                         struct zmk_behavior_binding_event event) {
     uint32_t keycode = binding->param1;
-    bool needs_shift = false;
-
     bool shift_already = is_shift_active();
+    bool needs_shift = shift_already;
 
     if(keycode == JPUS) {
         jpmode = !jpmode;
