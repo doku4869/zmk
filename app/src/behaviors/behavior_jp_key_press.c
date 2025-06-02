@@ -205,8 +205,8 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     }
 
     if (jpmode) {
-        convert_jis_key(binding->param1, &needs_shift, &keycode, shift_already);
-        convert_kc_key(binding->param1, &needs_shift, &keycode, shift_already);
+        convert_jis_key(keycode, &needs_shift, &keycode, shift_already);
+        convert_kc_key(keycode, &needs_shift, &keycode, shift_already);
     }
 
     shift_encoded_key(needs_shift, shift_already);
@@ -225,8 +225,8 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
 
     if (jpmode) {
-        convert_jis_key_release(binding->param1, &needs_shift, &keycode, shift_already);
-        convert_kc_key_release(binding->param1, &needs_shift, &keycode, shift_already);
+        convert_jis_key_release(keycode, &needs_shift, &keycode, shift_already);
+        convert_kc_key_release(keycode, &needs_shift, &keycode, shift_already);
     }
 
     int ret = raise_zmk_keycode_state_changed_from_encoded(keycode, false, event.timestamp);
