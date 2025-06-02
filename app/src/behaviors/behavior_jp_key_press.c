@@ -144,12 +144,12 @@ static bool is_shift_active() {
 static void convert_jis_key(uint32_t param1, bool *needs_shift, uint32_t *out_keycode,
                             bool shift_already, bool press_or_release) {
     for (int i = 0; i < jp_keymap_len; i++) {
-        if (jp_keymap[i].param1 == param1 && jp_keymap[i].already_shift == shift_already && press_or_release = PRESS) {
+        if (jp_keymap[i].param1 == param1 && jp_keymap[i].already_shift == shift_already && press_or_release == PRESS) {
             *out_keycode = jp_keymap[i].out_keycode;
             *needs_shift = jp_keymap[i].needs_shift;
             jp_keymap[i].tap_count++;
             return;
-        } else if (jp_keymap[i].param1 == param1 && jp_keymap[i].tap_count > 0 && press_or_release = RELEASE) {
+        } else if (jp_keymap[i].param1 == param1 && jp_keymap[i].tap_count > 0 && press_or_release == RELEASE) {
             jp_keymap[i].tap_count--;
             *out_keycode = jp_keymap[i].out_keycode;
             *needs_shift = jp_keymap[i].already_shift;
