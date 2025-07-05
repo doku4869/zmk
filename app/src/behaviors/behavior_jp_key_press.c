@@ -22,6 +22,8 @@
 /*------------------------------*/
 bool shift_flag = false;
 bool jpmode = true;
+bool set_per_mode = false;
+uint32_t per = NUMBER_8;
 int jp_keymap_len = 34;
 int kc_keymap_len = 1;
 
@@ -81,7 +83,8 @@ struct behavior_binding_kc_keymap {
 };
 
 struct behavior_binding_kc_keymap kc_keymap[] = {
-    {KC_IME, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true}
+    {KC_IME, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true},
+    {KC_PER, per, false, per, false}
 };
 
 static void convert_kc_key(uint32_t param1, bool *needs_shift, uint32_t *out_keycode,
@@ -177,8 +180,10 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     bool shift_already = is_shift_active();
     bool needs_shift = shift_already;
 
+    if (keycode == KC_SET_PER) { set_per_mode = !set_per_mode; }
     if (keycode == LSHIFT) { shift_flag = true; }
-    if(keycode == JPUS) { jpmode = !jpmode; }
+    if (keycode == JPUS) { jpmode = !jpmode; }
+    if (set_per_mode) { per = keycode; }
 
     if (jpmode) {
         convert_jis_key(keycode, &needs_shift, &keycode, shift_already, PRESS);
