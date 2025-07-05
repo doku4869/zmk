@@ -182,7 +182,10 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     if (keycode == KC_SET_PER) { set_per_mode = !set_per_mode; }
     if (keycode == LSHIFT) { shift_flag = true; }
     if (keycode == JPUS) { jpmode = !jpmode; }
-    if (set_per_mode) { per = keycode; }
+    if (set_per_mode) {
+        per = keycode; 
+        return 0;
+    }
 
     if (keycode == KC_PER) {
         int ret = raise_zmk_keycode_state_changed_from_encoded(per, true, event.timestamp);
