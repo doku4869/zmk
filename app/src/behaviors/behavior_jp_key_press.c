@@ -83,8 +83,7 @@ struct behavior_binding_kc_keymap {
 };
 
 struct behavior_binding_kc_keymap kc_keymap[] = {
-    {KC_IME, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true},
-    {KC_PER, per, false, per, false}
+    {KC_IME, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), false, ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_CAPS_LOCK), true}
 };
 
 static void convert_kc_key(uint32_t param1, bool *needs_shift, uint32_t *out_keycode,
@@ -185,6 +184,11 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     if (keycode == JPUS) { jpmode = !jpmode; }
     if (set_per_mode) { per = keycode; }
 
+    if (keycode == KC_PER) {
+        int ret = raise_zmk_keycode_state_changed_from_encoded(per, true, event.timestamp);
+        return ret;
+    }
+
     if (jpmode) {
         convert_jis_key(keycode, &needs_shift, &keycode, shift_already, PRESS);
     }
@@ -205,6 +209,11 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool needs_shift = shift_already;
 
     if (keycode == LSHIFT) { shift_flag = false; }
+
+    if (keycode == KC_PER) {
+        int ret = raise_zmk_keycode_state_changed_from_encoded(per, false, event.timestamp);
+        return ret;
+    }
 
     if (jpmode) {
         convert_jis_key(keycode, &needs_shift, &keycode, shift_already, RELEASE);
