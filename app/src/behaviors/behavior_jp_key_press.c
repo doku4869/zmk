@@ -22,6 +22,7 @@
 /*------------------------------*/
 bool shift_flag = false;
 bool jpmode = true;
+bool apple_mode = false;
 bool set_per_mode = false;
 uint32_t per = NUMBER_8;
 int jp_keymap_len = 34;
@@ -90,7 +91,16 @@ static void convert_kc_key(uint32_t param1, bool *needs_shift, uint32_t *out_key
                             bool shift_already, bool press_or_release) {
     for (int i = 0; i < kc_keymap_len; i++) {
         if (kc_keymap[i].param1 == param1) {
-            if (jpmode) {
+            if (apple_mode) {
+                *out_keycode = kc_keymap[i].jp_out_keycode;
+                if (press_or_release == PRESS) {
+                    *needs_shift = kc_keymap[i].jp_needs_shift;
+                    return;
+                } else if (press_or_release == RELEASE) {
+                    *needs_shift = shift_flag;
+                    return;
+                }
+            } else if (jpmode) {
                 *out_keycode = kc_keymap[i].jp_out_keycode;
                 if (press_or_release == PRESS) {
                     *needs_shift = kc_keymap[i].jp_needs_shift;
@@ -182,6 +192,10 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     if (keycode == KC_SET_PER) { set_per_mode = !set_per_mode; }
     if (keycode == LSHIFT) { shift_flag = true; }
     if (keycode == JPUS) { jpmode = !jpmode; }
+    if (keycode == KC_SET_US) { jpmode = false; return 0; }
+    if (keycode == KC_SET_JP) { jpmode = true; return 0; }
+    if (keycode == KC_APPLE_ON) { apple_mode = true; return 0; }
+    if (keycode == KC_APPLE_OFF) { apple_mode = false; return 0; }
     if (set_per_mode) {
         per = keycode; 
         return 0;
@@ -212,6 +226,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool needs_shift = shift_already;
 
     if (keycode == LSHIFT) { shift_flag = false; }
+    if (keycode == KC_SET_US || keycode == KC_SET_JP || keycode == KC_APPLE_ON || keycode == KC_APPLE_OFF) { return 0; }
 
     if (keycode == KC_PER) {
         int ret = raise_zmk_keycode_state_changed_from_encoded(per, false, event.timestamp);
