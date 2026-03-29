@@ -22,6 +22,7 @@
 /*------------------------------*/
 bool shift_flag = false;
 bool jpmode = true;
+bool saved_jpmode = true;
 bool apple_mode = false;
 bool set_per_mode = false;
 uint32_t per = NUMBER_8;
@@ -196,6 +197,8 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding * binding,
     if (keycode == KC_SET_JP) { jpmode = true; return 0; }
     if (keycode == KC_APPLE_ON) { apple_mode = true; return 0; }
     if (keycode == KC_APPLE_OFF) { apple_mode = false; return 0; }
+    if (keycode == KC_SAVE_JPMODE) { saved_jpmode = jpmode; return 0; }
+    if (keycode == KC_RESTORE_JPMODE) { jpmode = saved_jpmode; return 0; }
     if (set_per_mode) {
         per = keycode; 
         return 0;
@@ -226,7 +229,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding * binding,
     bool needs_shift = shift_already;
 
     if (keycode == LSHIFT) { shift_flag = false; }
-    if (keycode == KC_SET_US || keycode == KC_SET_JP || keycode == KC_APPLE_ON || keycode == KC_APPLE_OFF) { return 0; }
+    if (keycode == KC_SET_US || keycode == KC_SET_JP || keycode == KC_APPLE_ON || keycode == KC_APPLE_OFF || keycode == KC_SAVE_JPMODE || keycode == KC_RESTORE_JPMODE) { return 0; }
 
     if (keycode == KC_PER) {
         int ret = raise_zmk_keycode_state_changed_from_encoded(per, false, event.timestamp);
